@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atikah cantik banget!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FBF3EF;
+    --blush:#F3E1DA;
+    --wine:#7C2F3B;
+    --wine-deep:#5C1F29;
+    --gold:#C9A268;
+    --plum:#3B2A2C;
+    --plum-soft:#6b5456;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ivory);
+    color:var(--plum);
+    font-family:'EB Garamond', serif;
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- SEAL / INTRO ---------- */
+  #seal-screen{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    background:radial-gradient(circle at 50% 40%, #8a3644 0%, var(--wine-deep) 55%, #451319 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    cursor:pointer;
+    transition:opacity 1s ease, visibility 1s ease;
+  }
+  #seal-screen.opened{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  .seal{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #d8a94f, var(--gold) 60%, #a37b3e 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 30px rgba(0,0,0,0.4), inset 0 2px 6px rgba(255,255,255,0.4), inset 0 -4px 10px rgba(0,0,0,0.3);
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:2.6rem;
+    color:#5c3d17;
+    animation:pulse 2.6s ease-in-out infinite;
+    position:relative;
+  }
+  .seal::after{
+    content:'';
+    position:absolute;
+    inset:-14px;
+    border-radius:50%;
+    border:1px solid rgba(201,162,104,0.35);
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.045);}
+  }
+  #seal-screen p{
+    margin-top:28px;
+    color:var(--blush);
+    font-family:'Jost', sans-serif;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    font-size:0.72rem;
+    opacity:0.85;
+  }
+  #seal-screen .tap-hint{
+    margin-top:8px;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.05rem;
+    color:var(--gold);
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- HERO ---------- */
+  #hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:8vh 6vw;
+    position:relative;
+    background:
+      radial-gradient(ellipse at 50% 0%, var(--blush) 0%, var(--ivory) 62%);
+  }
+  .eyebrow{
+    font-family:'Jost', sans-serif;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    font-size:0.7rem;
+    color:var(--wine);
+    opacity:0.75;
+    margin-bottom:22px;
+  }
+  h1.hero-title{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(2.6rem, 7vw, 5.2rem);
+    line-height:1.08;
+    color:var(--wine-deep);
+    max-width:14ch;
+  }
+  .hero-sub{
+    margin-top:26px;
+    font-size:1.15rem;
+    color:var(--plum-soft);
+    max-width:38ch;
+    line-height:1.7;
+  }
+  .scroll-cue{
+    margin-top:60px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    font-family:'Jost', sans-serif;
+    font-size:0.68rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  .scroll-cue .line{
+    width:1px;
+    height:46px;
+    background:linear-gradient(to bottom, var(--gold), transparent);
+    animation:drop 2s ease-in-out infinite;
+  }
+  @keyframes drop{
+    0%{opacity:0; transform:translateY(-6px);}
+    50%{opacity:1;}
+    100%{opacity:0; transform:translateY(6px);}
+  }
+
+  /* ---------- TIMELINE ---------- */
+  #timeline{
+    position:relative;
+    max-width:1000px;
+    margin:0 auto;
+    padding:6vh 6vw 4vh;
+  }
+  #timeline::before{
+    content:'';
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:repeating-linear-gradient(to bottom, var(--gold) 0, var(--gold) 6px, transparent 6px, transparent 14px);
+    transform:translateX(-50%);
+    opacity:0.55;
+  }
+  @media (max-width:720px){
+    #timeline::before{ left:26px; }
+  }
+
+  .memory{
+    position:relative;
+    width:100%;
+    display:flex;
+    margin-bottom:9vh;
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  .memory.visible{ opacity:1; transform:translateY(0); }
+
+  .memory:nth-child(odd){ justify-content:flex-start; }
+  .memory:nth-child(even){ justify-content:flex-end; }
+
+  .memory-card{
+    width:44%;
+    position:relative;
+  }
+  @media (max-width:720px){
+    .memory{ justify-content:flex-start !important; padding-left:56px; }
+    .memory-card{ width:100%; }
+  }
+
+  .polaroid{
+    background:#fff;
+    padding:14px 14px 46px;
+    box-shadow:0 14px 30px rgba(60,30,30,0.16), 0 2px 6px rgba(60,30,30,0.08);
+    border-radius:2px;
+    position:relative;
+  }
+  .memory:nth-child(4n+1) .polaroid{ transform:rotate(-2.2deg); }
+  .memory:nth-child(4n+2) .polaroid{ transform:rotate(1.6deg); }
+  .memory:nth-child(4n+3) .polaroid{ transform:rotate(2deg); }
+  .memory:nth-child(4n)   .polaroid{ transform:rotate(-1.4deg); }
+  .polaroid:hover{ transform:rotate(0deg) scale(1.02); transition:transform 0.4s ease; }
+
+  .photo-slot{
+    width:100%;
+    aspect-ratio:4/5;
+    background:linear-gradient(135deg, var(--blush), #eddcd4 60%, var(--blush));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    color:var(--wine);
+    font-family:'Jost', sans-serif;
+    font-size:0.7rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    text-align:center;
+    padding:10px;
+  }
+  .photo-slot img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .polaroid .caption{
+    position:absolute;
+    bottom:12px;
+    left:14px;
+    right:14px;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.05rem;
+    color:var(--plum);
+    text-align:center;
+  }
+
+  .memory-date{
+    font-family:'Jost', sans-serif;
+    font-size:0.68rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:10px;
+    display:block;
+  }
+
+  .memory-note{
+    margin-top:16px;
+    font-size:1.02rem;
+    color:var(--plum-soft);
+    line-height:1.7;
+    max-width:34ch;
+  }
+
+  .node{
+    position:absolute;
+    top:6px;
+    left:50%;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--wine);
+    border:2px solid var(--ivory);
+    transform:translateX(-50%);
+    box-shadow:0 0 0 3px rgba(124,47,59,0.15);
+  }
+  @media (max-width:720px){
+    .node{ left:26px; }
+  }
+
+  /* ---------- CLOSING ---------- */
+  #closing{
+    min-height:80vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:10vh 8vw;
+    background:linear-gradient(180deg, var(--ivory) 0%, var(--blush) 100%);
+    position:relative;
+  }
+  .closing-mark{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.4rem;
+    color:var(--gold);
+    margin-bottom:20px;
+  }
+  #closing h2{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(2rem, 5.5vw, 3.4rem);
+    color:var(--wine-deep);
+    max-width:20ch;
+    line-height:1.25;
+  }
+  #closing .signoff{
+    margin-top:30px;
+    font-family:'Jost', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--plum-soft);
+  }
+  .petals-note{
+    margin-top:70px;
+    font-family:'Jost', sans-serif;
+    font-size:0.62rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--gold);
+    opacity:0.6;
+  }
+</style>
+</head>
+<body>
+
+  <div id="seal-screen" onclick="openSeal()">
+    <div class="seal">✦</div>
+    <p>Sedikit kejutan</p>
+    <p class="tap-hint">click untuk membuka</p>
+  </div>
+
+  <section id="hero">
+    <div class="eyebrow">Untuk kamu, dari jauh</div>
+    <h1 class="hero-title">beberapa foto<br>yang ku sukai (semua aku suka pls)</h1>
+    <p class="hero-sub">Kita memang belum pernah bertemu langsung, namun aku berharap dapat bertemu di lain waktu. scroll ke bawah yah.</p>
+    <div class="scroll-cue">
+      <span>Mulai</span>
+      <span class="line"></span>
+    </div>
+  </section>
+
+  <section id="timeline"></section>
+
+  <section id="closing">
+    <div class="closing-mark">✦</div>
+    <h2>Ini baru sebagian kecil. sisanya ingin aku lihat langsung, suatu hari nanti.</h2>
+    <div class="signoff">Dengan tulus</div>
+    <div class="petals-note">dibuat dengan memikirkanmu</div>
+  </section>
+
+<script>
+  // ---------------------------------------------------------
+  // EDIT DAFTAR INI untuk menambahkan momen versimu sendiri.
+  // "img" bisa diisi URL foto, atau dikosongkan ("") untuk
+  // sementara pakai bingkai placeholder sampai fotonya ditambahkan.
+  // ---------------------------------------------------------
+  const memories = [
+    { date: "Foto apa yah",       caption: "Cantikkk bangett kayakk bukan manusia", note: "Anu itu iya hmmm.", img: "IMG-20260809-WA0036.jpg" },
+    { date: "Kok cantikkk",     caption: "Foto kok cakep cakep semua yak.", note: "Murkanyo aku.", img: "IMG-20260809-WA0073.jpg" },
+    { date: "Anu anuan",   caption: "Apaa apaann iniii (Cantik banget ya tuhan)", note: "Apa aja boleh.", img: "IMG-20260809-WA0066.jpg" },
+    { date: "Zip zap zup",  caption: "BipBipBupBopBiup", note: "IYAH IYAH CANTIKKKKK.", img: "IMG-20260809-WA0018.jpg" },
+    { date: "Jangan cakep cakep plss", caption: "Mirip my masa depan", note: "CANTIKKK BANGET PENGEN CULIIKK.", img: "IMG-20260809-WA0040.jpg" },
+  ];
+
+  const container = document.getElementById('timeline');
+
+  memories.forEach((m) => {
+    const el = document.createElement('div');
+    el.className = 'memory';
+    el.innerHTML = `
+      <div class="node"></div>
+      <div class="memory-card">
+        <span class="memory-date">${m.date}</span>
+        <div class="polaroid">
+          <div class="photo-slot">
+            ${m.img ? `<img src="${m.img}" alt="${m.caption}">` : 'gambar di sini'}
+          </div>
+          <div class="caption">${m.caption}</div>
+        </div>
+        <p class="memory-note">${m.note}</p>
+      </div>
+    `;
+    container.appendChild(el);
+  });
+
+  // reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.18 });
+
+  document.querySelectorAll('.memory').forEach(m => observer.observe(m));
+
+  function openSeal(){
+    document.getElementById('seal-screen').classList.add('opened');
+  }
+
+  // allow keyboard activation of the seal
+  document.getElementById('seal-screen').setAttribute('tabindex', '0');
+  document.getElementById('seal-screen').setAttribute('role', 'button');
+  document.getElementById('seal-screen').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' '){ openSeal(); }
+  });
+</script>
+
+</body>
+</html>
